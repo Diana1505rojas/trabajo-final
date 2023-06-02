@@ -181,20 +181,12 @@ while True:
     
 
 
-
-
-
-
-
-
-
-
-
-
+#MENU 2 RESPONSABLES------------------------------------------------------------------------------------
     elif men == "2":
         print("Seleccione que desea realizar\n-----------------------------")
-        res= menus_secundarios2(str(input("1. Ingresar un nuevo responsable\n2. Ver la información de todos los responsables almacenados \n3. Actualizar la información de un responsable\n4. Eliminar un responsable\n5.Buscar un responsable \n6. Volver al menú principal\n-->  ")))
+        res= menus_secundarios2(str(input("1. Ingresar un nuevo responsable\n2. Ver la información de todos los responsables almacenados \n3. Actualizar la información de un responsable\n4. Eliminar un responsable\n5.Buscar un responsable \n5. Volver al menú principal\n-->  ")))
 
+#menu para ingresar responsables
         if res== "1":
             cod_responsable = codigos_num(str(input("Ingrese codigo del responsable contemplado entre 7 y 10 cifras:\n")))
             nombre = nombres(str(input("Ingrese su primer nombre:\n")))
@@ -211,22 +203,97 @@ while True:
                     "cargo":cargo,
                 }
                 mycol2.insert_one(dir)
-                print("¡La informacion ha sido guardada exitosamente!")
+                print("¡La informacion ha sido guardada exitosamente!\n")
 
  
-
+#menu para ver datos
         elif res== "2":
-            print("ddd")
-        elif res== "3":
-            print("ddd")
+            for y in mycol2.find():
+                print(y)
 
-        elif res== "4":
+                print("__________________________________________________________________________________________________________________________________________________________________________________________________________________")
             
-            print("ddd")
+            salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+            while salir !="1" and salir !="2":
+                print("El parametro ingresado no es valido")
+                salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+            if salir =="1":
+                print("Ha salido correctamente") 
+                break
+            if salir =="2":
+                print("¡Bienvenido nuevamente al menu principal!\n")
+                pass
+        
+#actualizar informacion de los responsables
+        elif res== "3":
+            cod_responsable= input("Ingresar el numero de activo del equipo que desea actualizar: ")
+            buscar= mycol2.find_one({"codigo del responsable":cod_responsable})
+
+            if buscar:
+                nombre = nombres(str(input("Ingrese su primer nombre:\n")))
+                apellido = nombres(str(input("Ingrese su primer apellido:\n")))
+                id = variable_num(str(input("Ingrese su numero de documento de identidad:\n")))
+                cargo = nombres(str(input("Ingrese su cargo actual:\n")))
+                
+                
+                mycol2.update_one({
+                    "codigo del responsable":cod_responsable},
+                    {"$set":{
+                        "nombre":nombre,
+                        "apellido":apellido,
+                        "ID":id,
+                        "cargo":cargo}
+                    })
+                print("Datos del responsable actualizados!\n")
+            
+                salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+                while salir !="1" and salir !="2":
+                    print("El parametro ingresado no es valido")
+                    salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+                if salir =="1":
+                    print("Ha salido correctamente") 
+                    break
+                if salir =="2":
+                    print("¡Bienvenido nuevamente al menu principal!\n")
+                    pass
+                
+            else: 
+                print("El responsable no se encuentra registrado\n")
+                print("¡Bienvenido nuevamente al menu principal!\n")
+                pass
+
+#ELIMINAR DATOS
+        elif res== "4":
+            cod_responsable= input("Ingresar el numero del responsable que desea eliminar:\n")
+            buscar= mycol2.find_one({"codigo del responsable":cod_responsable})
+
+            if buscar:
+                mycol2.delete_one({"codigo del responsable":cod_responsable})
+                print("¡El responsable ha sido eliminado correctamente!\n")
+
+                salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+                while salir !="1" and salir !="2":
+                    print("El parametro ingresado no es valido")
+                    salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+                if salir =="1":
+                    print("Ha salido correctamente") 
+                    break
+                if salir =="2":
+                    print("¡Bienvenido nuevamente al menu principal!\n")
+                    pass
+            else:
+                print("El codigo del responsable no existe en la base de datos\n")
+                print("¡Bienvenido nuevamente al menu principal!\n")
+                pass
+            
+#volver al menu
         elif res== "5":
-            print("ddd")
+            print("¡Bienvenido nuevamente al menu principal!\n")
+            pass
         
 
+
+# MENU 3 UBICACIONES--------------------------------------------------------------------------------------------
     elif men == "3":
         print("Seleccione que desea realizar\n-----------------------------")
         ubi= menus_secundarios3(str(input("1. Ingresar una nueva ubicacion\n2. Ver la información de todas las ubicaciones almacenadas \n3. Actualizar la información de una ubicacion\n4. Eliminar ubicaciones de un equipo\n5.Buscar una ubicacion \n6. Volver al menú principal\n-->  ")))
