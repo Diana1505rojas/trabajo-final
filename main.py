@@ -12,7 +12,6 @@ mycol = mybd["equipos"]
 mycol2 = mybd["responsables"]
 mycol3 = mybd["ubicaciones"]
 
-print("pruebaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 
 print("_______________________________\n|Bienvenido a la base de datos|\n| de mantenimiento de equipos |\n|         Biomedicos          |\n|_____________________________|")
 print("¿Que deseas realizar el dia de hoy?\n")
