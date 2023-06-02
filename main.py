@@ -119,15 +119,15 @@ while True:
                 print(bus)
 
                 salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
-            while salir !="1" and salir !="2":
-                print("El parametro ingresado no es valido")
-                salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
-            if salir =="1":
-                print("Ha salido correctamente") 
-                break
-            if salir =="2":
-                print("¡Bienvenido nuevamente al menu principal!\n")
-                pass
+                while salir !="1" and salir !="2":
+                    print("El parametro ingresado no es valido")
+                    salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+                if salir =="1":
+                    print("Ha salido correctamente") 
+                    break
+                if salir =="2":
+                    print("¡Bienvenido nuevamente al menu principal!\n")
+                    pass
 
 
             else:
