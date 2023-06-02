@@ -46,6 +46,18 @@ while True:
                 }
                 mycol.insert_one(dir)
                 print("¡La informacion ha sido guardada exitosamente!")
+            
+            salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+            while salir !="1" and salir !="2":
+                print("El parametro ingresado no es valido")
+                salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+            if salir =="1":
+                print("Ha salido correctamente") 
+                break
+            if salir =="2":
+                print("¡Bienvenido nuevamente al menu principal!\n")
+                pass
+
 
 
         elif equ== "2":
@@ -78,8 +90,21 @@ while True:
                     })
                 print("Equipo actualizado")
             
+                salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+                while salir !="1" and salir !="2":
+                    print("El parametro ingresado no es valido")
+                    salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+                if salir =="1":
+                    print("Ha salido correctamente") 
+                    break
+                if salir =="2":
+                    print("¡Bienvenido nuevamente al menu principal!\n")
+                    pass
+            
             else: 
-                print("El equipo no se encuentra registrado")
+                print("El equipo no se encuentra registrado\n")
+                print("¡Bienvenido nuevamente al menu principal!\n")
+                pass
 
 
 
@@ -92,16 +117,53 @@ while True:
                 print("El equipo ha sido encontrado", dir)
 
             else:
-                print("El equipo no se encuentra registrado, intenta nuevamente")
+                print("El equipo no se encuentra registrado, intenta nuevamente\n")
+                print("¡Bienvenido nuevamente al menu principal!\n")
+                pass
+
+
+
 
         elif equ== "5":
             for y in mycol.find():
                 print(y)
+                print("__________________________________________________________________________________________________________________________________________________________________________________________________________________")
+            salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+            while salir !="1" and salir !="2":
+                print("El parametro ingresado no es valido")
+                salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+            if salir =="1":
+                print("Ha salido correctamente") 
+                break
+            if salir =="2":
+                print("¡Bienvenido nuevamente al menu principal!\n")
+                pass
+
 
         elif equ== "6":
-            print("ddd")
+            num_activo= input("Ingresar el numero de activo del equipo que desea eliminar:\n")
+            buscar= mycol.find_one({"numero de activo":num_activo})
+            if buscar:
+                mycol.delete_one({"numero de activo":num_activo})
+                print("¡El equipo ha sido eliminado correctamente!")
+                salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+                while salir !="1" and salir !="2":
+                    print("El parametro ingresado no es valido")
+                    salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+                if salir =="1":
+                    print("Ha salido correctamente") 
+                    break
+                if salir =="2":
+                    print("¡Bienvenido nuevamente al menu principal!\n")
+                    pass
+            else:
+                print("El numero de activo no existe en la base de datos\n")
+                print("¡Bienvenido nuevamente al menu principal!\n")
+                pass
+            
         elif equ== "7":
-            print("ddd")
+            print("¡Bienvenido nuevamente al menu principal!\n")
+            pass
     
 
 
