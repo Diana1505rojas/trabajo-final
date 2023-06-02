@@ -67,7 +67,7 @@ while True:
 
         elif equ== "2":
 
-            print("ddd")
+            print("No pudimos hacerlo :(, pasa al siguiente")
 
     #actualizar informacion   
         elif equ== "3":
