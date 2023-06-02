@@ -17,7 +17,7 @@ def menus_secundarios1(menu_e):
                 menu_e =(str(input("1. Ingresar un nuevo equipo en forma manual\n2. Ingresar un nuevo equipo en forma automática\n3. Actualizar la información de un equipo\n4. Buscar un equipo\n5. Ver la información de todos los equipos almacenados\n6. Eliminar un equipo\n7. Volver al menú principal\n-->  ")))
             return menu_e
     except:
-         print("Parametros incorrectos")
+         print("Parametros incorrectos ")
 
 
 
