@@ -21,11 +21,12 @@ print("¿Que deseas realizar el dia de hoy?\n")
 while True:
 
     men= menu_principal(str(input("Seleccione que tipo de informacion desea gestionar.\n1. Equipos\n2. Responsables\n3. Ubicaciones\n4. Salir\n-->  ")))
-
+#MENU 1 EQUIPOS
     if men == "1":
         print("Seleccione que desea realizar\n-----------------------------")
         equ= menus_secundarios1(str(input("1. Ingresar un nuevo equipo en forma manual\n2. Ingresar un nuevo equipo en forma automática\n3. Actualizar la información de un equipo\n4. Buscar un equipo\n5. Ver la información de todos los equipos almacenados\n6. Eliminar un equipo\n7. Volver al menú principal\n-->  ")))
 
+    #menu para ingresar un nuevo equipo
         if equ== "1":
 
             serial = str(input("Ingrese el serial del equipo:\n"))
@@ -36,6 +37,7 @@ while True:
             cod_responsable = codigos_num(str(input("Ingrese codigo del responsable contemplado entre 7 y 10 cifras:\n")))
 
             if serial and num_activo and nom_equipo and marca and cod_ubicacion and cod_responsable:
+                #diccionario donde se almacenan los datos
                 dir = {
                     "serial":serial,
                     "numero de activo":num_activo,
@@ -64,7 +66,7 @@ while True:
 
             print("ddd")
 
-        #actualizar informacion
+    #actualizar informacion   
         elif equ== "3":
             
             num_activo= input("Ingresar el numero de activo del equipo que desea actualizar: ")
@@ -107,7 +109,7 @@ while True:
                 pass
 
 
-
+    #buscar informacion de un equipo
         elif equ== "4":
 
             num_activo= input("Ingresar el numero de activo del equipo que desea buscar: ")
@@ -137,7 +139,7 @@ while True:
 
 
 
-
+    #ver todos los equipo
         elif equ== "5":
             for y in mycol.find():
                 print(y)
@@ -152,8 +154,9 @@ while True:
             if salir =="2":
                 print("¡Bienvenido nuevamente al menu principal!\n")
                 pass
+            
 
-
+    #eliminar un equipo
         elif equ== "6":
             num_activo= input("Ingresar el numero de activo del equipo que desea eliminar:\n")
             buscar= mycol.find_one({"numero de activo":num_activo})
@@ -174,7 +177,7 @@ while True:
                 print("El numero de activo no existe en la base de datos\n")
                 print("¡Bienvenido nuevamente al menu principal!\n")
                 pass
-            
+    #regresar al menu principal            
         elif equ== "7":
             print("¡Bienvenido nuevamente al menu principal!\n")
             pass
@@ -186,7 +189,7 @@ while True:
         print("Seleccione que desea realizar\n-----------------------------")
         res= menus_secundarios2(str(input("1. Ingresar un nuevo responsable\n2. Ver la información de todos los responsables almacenados \n3. Actualizar la información de un responsable\n4. Eliminar un responsable\n5.Buscar un responsable \n5. Volver al menú principal\n-->  ")))
 
-#menu para ingresar responsables
+    #menu para ingresar responsables
         if res== "1":
             cod_responsable = codigos_num(str(input("Ingrese codigo del responsable contemplado entre 7 y 10 cifras:\n")))
             nombre = nombres(str(input("Ingrese su primer nombre:\n")))
@@ -206,7 +209,7 @@ while True:
                 print("¡La informacion ha sido guardada exitosamente!\n")
 
  
-#menu para ver datos
+    #menu para ver datos
         elif res== "2":
             for y in mycol2.find():
                 print(y)
@@ -224,7 +227,7 @@ while True:
                 print("¡Bienvenido nuevamente al menu principal!\n")
                 pass
         
-#actualizar informacion de los responsables
+    #actualizar informacion de los responsables
         elif res== "3":
             cod_responsable= input("Ingresar el numero de activo del equipo que desea actualizar: ")
             buscar= mycol2.find_one({"codigo del responsable":cod_responsable})
@@ -262,7 +265,7 @@ while True:
                 print("¡Bienvenido nuevamente al menu principal!\n")
                 pass
 
-#ELIMINAR DATOS
+    #Eliminar datos
         elif res== "4":
             cod_responsable= input("Ingresar el numero del responsable que desea eliminar:\n")
             buscar= mycol2.find_one({"codigo del responsable":cod_responsable})
@@ -286,7 +289,7 @@ while True:
                 print("¡Bienvenido nuevamente al menu principal!\n")
                 pass
             
-#volver al menu
+    #volver al menu
         elif res== "5":
             print("¡Bienvenido nuevamente al menu principal!\n")
             pass
@@ -295,7 +298,7 @@ while True:
 
 
 
-# MENU 3 UBICACIONES--------------------------------------------------------------------------------------------
+#MENU 3 UBICACIONES--------------------------------------------------------------------------------------------
     elif men == "3":
         print("Seleccione que desea realizar\n-----------------------------")
         ubi= menus_secundarios3(str(input("1. Ingresar una nueva ubicacion\n2. Ver la información de todas las ubicaciones almacenadas \n3. Actualizar la información de una ubicacion\n4. Eliminar una ubicacion de un equipo\n5.Buscar una ubicacion \n6. Volver al menú principal\n-->  ")))
