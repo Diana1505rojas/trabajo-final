@@ -131,7 +131,7 @@ while True:
 
 
             else:
-                print("El equipo no se encuentra registrado, intenta nuevamente\n")
+                print("El equipo no se encuentra registrado\n")
                 print("¡Bienvenido nuevamente al menu principal!\n")
                 pass
 
@@ -227,27 +227,140 @@ while True:
             print("ddd")
         
 
+
+
+
     elif men == "3":
         print("Seleccione que desea realizar\n-----------------------------")
-        ubi= menus_secundarios3(str(input("1. Ingresar una nueva ubicacion\n2. Ver la información de todas las ubicaciones almacenadas \n3. Actualizar la información de una ubicacion\n4. Eliminar ubicaciones de un equipo\n5.Buscar una ubicacion \n6. Volver al menú principal\n-->  ")))
+        ubi= menus_secundarios3(str(input("1. Ingresar una nueva ubicacion\n2. Ver la información de todas las ubicaciones almacenadas \n3. Actualizar la información de una ubicacion\n4. Eliminar una ubicacion de un equipo\n5.Buscar una ubicacion \n6. Volver al menú principal\n-->  ")))
 
         if ubi== "1":
             cod_ubicacion = codigos_num(str(input("Ingrese un codigo de ubicacion contemplado entre 7 y 10 cifras:\n")))
             nom_ubicacion = nombres(str(input("Ingrese el nombre de la ubicacion:\n")))
-            piso_ubicacion = variable_num(str(input("Ingrese el piso donde se encuentra ubicado:\n")))
+            piso_ubicacion = variable_num(str(input("Ingrese el piso donde se encuentra ubicada:\n")))
 
-            print("¡La informacion ha sido guardada exitosamente!")
+            if cod_ubicacion and nom_ubicacion and piso_ubicacion:
+                dir = {
+                    "codigo de ubicacion":cod_ubicacion,
+                    "nombre de la ubicacion":nom_ubicacion,
+                    "piso de la ubicacion":piso_ubicacion
+                }
+                mycol3.insert_one(dir)
+                print("¡La informacion ha sido guardada exitosamente!")
+            salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+            while salir !="1" and salir !="2":
+                print("El parametro ingresado no es valido")
+                salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+            if salir =="1":
+                print("Ha salido correctamente") 
+                break
+            if salir =="2":
+                print("¡Bienvenido nuevamente al menu principal!\n")
+                pass
 
 
         elif ubi== "2":
-            print("ddd")
+            for y in mycol3.find():
+                print(y)
+                print("______________________________________________________________________________________________________________________________________________________________")
+            salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+            while salir !="1" and salir !="2":
+                print("El parametro ingresado no es valido")
+                salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+            if salir =="1":
+                print("Ha salido correctamente") 
+                break
+            if salir =="2":
+                print("¡Bienvenido nuevamente al menu principal!\n")
+                pass
+
+
         elif ubi== "3":
-            print("ddd")
-        elif ubi== "4":
-            print("ddd")
-        elif ubi== "5":
-            print("ddd")
+            cod_ubicacion= input("Ingresar el codigo de ubicacion que desea actualizar: ")
+            buscar= mycol3.find_one({"codigo de ubicacion":cod_ubicacion})
+
+            if buscar:
+                nom_ubicacion = nombres(str(input("Ingrese el nombre de la ubicacion:\n")))
+                piso_ubicacion = variable_num(str(input("Ingrese el piso donde se encuentra ubicada:\n")))
+            
         
+                mycol3.update_one({
+                    "codigo de ubicacion":cod_ubicacion},
+                    {"$set":{
+                        "nombre de la ubicacion":nom_ubicacion,
+                        "piso de la ubicacion":piso_ubicacion}
+                        })
+                print("Ubicacion actualizada")
+            
+                salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+                while salir !="1" and salir !="2":
+                    print("El parametro ingresado no es valido")
+                    salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+                if salir =="1":
+                    print("Ha salido correctamente") 
+                    break
+                if salir =="2":
+                    print("¡Bienvenido nuevamente al menu principal!\n")
+                    pass
+            
+            else: 
+                print("La ubicacion no se encuentra registrada\n")
+                print("¡Bienvenido nuevamente al menu principal!\n")
+                pass
+
+
+        elif ubi== "4":
+            cod_ubicacion= input("Ingresar el codigo de ubicacion que desea eliminar:\n")
+            buscar= mycol3.find_one({"codigo de ubicacion":cod_ubicacion})
+
+            if buscar:
+                mycol3.delete_one({"codigo de ubicacion":cod_ubicacion})
+                print("¡El equipo ha sido eliminado correctamente!")
+
+                salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+                while salir !="1" and salir !="2":
+                    print("El parametro ingresado no es valido")
+                    salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+                if salir =="1":
+                    print("Ha salido correctamente") 
+                    break
+                if salir =="2":
+                    print("¡Bienvenido nuevamente al menu principal!\n")
+                    pass
+            else:
+                print("El codigo de ubicacion no existe en la base de datos\n")
+                print("¡Bienvenido nuevamente al menu principal!\n")
+                pass
+
+
+        elif ubi== "5":
+            cod_ubicacion= input("Ingresar el codigo de la ubicacion que desea buscar: ")
+            bus= mycol3.find_one({"codigo de ubicacion":cod_ubicacion})
+
+            if bus:
+                print("La ubicacion ha sido encontrada\n")
+                print(bus)
+
+                salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+                while salir !="1" and salir !="2":
+                    print("El parametro ingresado no es valido")
+                    salir = str(input("Desea salir ahora ?\n1.SI\n2.NO\n"))
+                if salir =="1":
+                    print("Ha salido correctamente") 
+                    break
+                if salir =="2":
+                    print("¡Bienvenido nuevamente al menu principal!\n")
+                    pass
+
+
+            else:
+                print("La ubicacion no se encuentra registrada\n")
+                print("¡Bienvenido nuevamente al menu principal!\n")
+                pass
+        
+        elif ubi =="6":
+            print("¡Bienvenido nuevamente al menu principal!\n")
+            pass
 
 
 
