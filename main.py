@@ -116,6 +116,7 @@ while True:
             if bus:
                 
                 print("El equipo ha sido encontrado\n")
+                print(bus)
 
 
             else:
