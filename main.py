@@ -12,6 +12,8 @@ mycol = mybd["equipos"]
 mycol2 = mybd["responsables"]
 mycol3 = mybd["ubicaciones"]
 
+print("pruebaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+
 print("_______________________________\n|Bienvenido a la base de datos|\n| de mantenimiento de equipos |\n|         Biomedicos          |\n|_____________________________|")
 print("¿Que deseas realizar el dia de hoy?\n")
 
@@ -58,7 +60,6 @@ while True:
 
             if dir:
                 serial = str(input("Ingrese el serial del equipo:\n"))
-                num_activo = variable_num(str(input("Ingrese el numero de activo:\n")))
                 nom_equipo = str(input("Ingrese el nombre del equipo:\n"))
                 marca = str(input("Ingrese la marca del equipo:\n"))
                 cod_ubicacion = codigos_num(str(input("Ingrese un codigo de ubicacion contemplado entre 7 y 10 cifras:\n")))
