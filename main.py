@@ -84,7 +84,16 @@ while True:
 
 
         elif equ== "4":
-            print("ddd")
+
+            num_activo= input("Ingresar el numero de activo del equipo que desea buscar: ")
+            dir= mycol.find_one({"numero de activo":num_activo})
+            if num_activo in dir:
+                
+                print("El equipo ha sido encontrado", dir)
+
+            else:
+                print("El equipo no se encuentra registrado, intenta nuevamente")
+
         elif equ== "5":
             
             print("aaaaa")
@@ -136,7 +145,7 @@ while True:
             print("ddd")
 
         elif res== "4":
-            print("pruebita")
+            
             print("ddd")
         elif res== "5":
             print("ddd")
