@@ -86,7 +86,9 @@ while True:
         elif equ== "4":
             print("ddd")
         elif equ== "5":
-            print("ddd")
+            
+            print("aaaaa")
+
         elif equ== "6":
             print("ddd")
         elif equ== "7":
