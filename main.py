@@ -132,7 +132,9 @@ while True:
             print("ddd")
         elif res== "3":
             print("ddd")
+
         elif res== "4":
+            print("pruebita")
             print("ddd")
         elif res== "5":
             print("ddd")
