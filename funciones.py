@@ -1,3 +1,4 @@
+#funcion de validacion del menu principal
 def menu_principal(menu):
     try:
         while menu != "1" and menu != "2" and menu !="3" and menu!="4":
@@ -8,8 +9,9 @@ def menu_principal(menu):
         print("Parametros incorrectos")
 
 
+#FUNCIONES DE VALIDACION DE LOS MENUS SECUNDARIOS-----------------------------
 
-
+#funcion de validacion menu equipos
 def menus_secundarios1(menu_e):
     try:
             while menu_e!= "1" and menu_e!= "2" and menu_e!="3" and menu_e!="4" and menu_e!="5" and menu_e!="6" and menu_e!="7":
@@ -21,7 +23,7 @@ def menus_secundarios1(menu_e):
 
 
 
-
+#funcion de validacion menu responsables
 def menus_secundarios2(menu_r):
     try:
             while menu_r!= "1" and menu_r!= "2" and menu_r!="3" and menu_r!="4" and menu_r!="5" and menu_r!="6" :
@@ -33,7 +35,7 @@ def menus_secundarios2(menu_r):
 
 
 
-
+#funcion de validacion menu ubicaciones
 def menus_secundarios3(menu_u):
     try:
             while menu_u!= "1" and menu_u!= "2" and menu_u!="3" and menu_u!="4" and menu_u!="5" and menu_u!="6" :
@@ -44,6 +46,10 @@ def menus_secundarios3(menu_u):
          print("Parametros incorrectos")
      
 
+
+#FUNCIONES DE VALIDACION DE VARIABLES------------------------
+
+#funcion de validacion de una variable numerica
 def variable_num(numero):
     try:
         while numero.isnumeric() == False:
@@ -53,7 +59,7 @@ def variable_num(numero):
     except:
          print("Parametros invalidos")
 
-
+#funcion de validacion de un codigo numerico
 def codigos_num(codigos):
     try:
         while codigos.isnumeric() == False or len(str(codigos)) > 10 or len(str(codigos)) < 7:
@@ -63,7 +69,7 @@ def codigos_num(codigos):
     except:
          print("Parametros invalidos")
 
-
+#funcion de validacion de variables alfabeticas
 def nombres(nombre):
     try:
         while nombre.isalpha() == False:

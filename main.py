@@ -1,3 +1,5 @@
+
+#importacion de las librerias y el gestor de datos
 from funciones import *
 import csv
 from pymongo.mongo_client import MongoClient
@@ -7,6 +9,7 @@ uri = "mongodb+srv://informatica1:bio123@informatica1.wwqyiub.mongodb.net/?retry
 
 client = MongoClient(uri)
 
+#creacion de las bases de datos 
 mybd = client["informatica1"]
 mycol = mybd["equipos"]
 mycol2 = mybd["responsables"]
@@ -300,6 +303,7 @@ while True:
         print("Seleccione que desea realizar\n-----------------------------")
         ubi= menus_secundarios3(str(input("1. Ingresar una nueva ubicacion\n2. Ver la información de todas las ubicaciones almacenadas \n3. Actualizar la información de una ubicacion\n4. Eliminar una ubicacion de un equipo\n5.Buscar una ubicacion \n6. Volver al menú principal\n-->  ")))
 
+#ingresar nueva ubicacion
         if ubi== "1":
             cod_ubicacion = codigos_num(str(input("Ingrese un codigo de ubicacion contemplado entre 7 y 10 cifras:\n")))
             nom_ubicacion = nombres(str(input("Ingrese el nombre de la ubicacion:\n")))
@@ -324,7 +328,7 @@ while True:
                 print("¡Bienvenido nuevamente al menu principal!\n")
                 pass
 
-
+#imprimir todas las ubicaciones almacenadas
         elif ubi== "2":
             for y in mycol3.find():
                 print(y)
@@ -340,7 +344,7 @@ while True:
                 print("¡Bienvenido nuevamente al menu principal!\n")
                 pass
 
-
+#actualizar una ubicacion
         elif ubi== "3":
             cod_ubicacion= input("Ingresar el codigo de ubicacion que desea actualizar: ")
             buscar= mycol3.find_one({"codigo de ubicacion":cod_ubicacion})
@@ -374,7 +378,7 @@ while True:
                 print("¡Bienvenido nuevamente al menu principal!\n")
                 pass
 
-
+#eliminar una ubicacion de la base de datos
         elif ubi== "4":
             cod_ubicacion= input("Ingresar el codigo de ubicacion que desea eliminar:\n")
             buscar= mycol3.find_one({"codigo de ubicacion":cod_ubicacion})
@@ -398,7 +402,7 @@ while True:
                 print("¡Bienvenido nuevamente al menu principal!\n")
                 pass
 
-
+#buscar una ubicacion en la bae de datos
         elif ubi== "5":
             cod_ubicacion= input("Ingresar el codigo de la ubicacion que desea buscar: ")
             bus= mycol3.find_one({"codigo de ubicacion":cod_ubicacion})
@@ -423,13 +427,14 @@ while True:
                 print("La ubicacion no se encuentra registrada\n")
                 print("¡Bienvenido nuevamente al menu principal!\n")
                 pass
-        
+
+#volver al menu principal
         elif ubi =="6":
             print("¡Bienvenido nuevamente al menu principal!\n")
             pass
 
 
-
+#SALIR DEL CODIGO--------------------------------------------------
     elif men == "4":
         print("Ha salido correctamente")   
         break
