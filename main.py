@@ -56,9 +56,9 @@ while True:
         elif equ== "3":
             
             num_activo= input("Ingresar el numero de activo del equipo que desea actualizar: ")
-            dir= mycol.find_one({"numero de activo":num_activo})
+            buscar= mycol.find_one({"numero de activo":num_activo})
 
-            if dir:
+            if buscar:
                 serial = str(input("Ingrese el serial del equipo:\n"))
                 nom_equipo = nombres(str(input("Ingrese el nombre del equipo:\n")))
                 marca = nombres(str(input("Ingrese la marca del equipo:\n")))
@@ -86,8 +86,8 @@ while True:
         elif equ== "4":
             print("ddd")
         elif equ== "5":
-            
-            print("aaaaa")
+            for y in mycol.find():
+                print(y)
 
         elif equ== "6":
             print("ddd")
