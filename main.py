@@ -126,7 +126,7 @@ while True:
                 mycol2.insert_one(dir)
                 print("¡La informacion ha sido guardada exitosamente!")
 
-
+ 
 
         elif res== "2":
             print("ddd")
